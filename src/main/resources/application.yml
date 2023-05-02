@@ -6,7 +6,7 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: trace
 spring:
   datasource:
-    url: jdbc:mysql://141.164.53.210:3306/TEST
+    url: ENC(wRMC53F4rSJn/Xw49G+OxMd00SKMql4gq6QIJ3u5np7KFKt5AG3NHcky6gLWmkzA)
     username: ENC(RraqcVraoTgYuyfrdxxX8w==)
     password: ENC(lQy4Qwz/q6+gyOiDYT9KDg==)
     driver-class-name: com.mysql.cj.jdbc.Driver
