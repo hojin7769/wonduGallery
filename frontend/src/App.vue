@@ -1,8 +1,8 @@
 <template>
-  <div v-if="true" class="common-layout">
+  <div v-if="false" class="common-layout">
     <LoginView></LoginView>
   </div>
-  <div class="common-layout" v-if="false">
+  <div class="common-layout" v-if="true">
     <el-container class="pageContainer" style="padding: 0px">
       <Layout />
     </el-container>
@@ -16,7 +16,9 @@ import LoginView from '@/views/LoginView.vue'
 </script>
 <style lang="sass" scoped>
 .common-layout
-  height: 100%
+  min-height: 100vh
+  position: relative
+  width: 100%
 .pageContainer
   height: inherit
 *

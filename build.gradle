@@ -35,6 +35,12 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+bootWar{
+    archivesBaseName = "ROOT"
+    archiveFileName="ROOT.war"
+    archiveVersion="0.0.0"
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }

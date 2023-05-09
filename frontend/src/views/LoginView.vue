@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="appLog">
     <div class="header">
       <h2 class="logo">LOGO HERE</h2>
     </div>
@@ -20,8 +20,8 @@
 import Login from '@/components/Login/Login.vue'
 </script>
 
-<style lang="scss">
-#app {
+<style lang="scss" scoped>
+#appLog {
   font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -32,10 +32,10 @@ import Login from '@/components/Login/Login.vue'
   flex-direction: column;
   min-height: 100vh;
 }
-body {
+#appLog {
   margin: 0;
   padding: 0;
-  background: #102a43;
+  background-color: #102a43;
   background-image: url('https://uploads.codesandbox.io/uploads/user/c3fb8e8a-35ea-4232-b5d6-0f3c5373510b/LVs7-dots.png');
   background-size: contain;
 }

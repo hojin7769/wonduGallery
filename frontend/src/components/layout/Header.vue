@@ -22,8 +22,9 @@
           <el-menu-item index="2-4-3">item three</el-menu-item>
         </el-sub-menu>
       </el-sub-menu>
+      <el-menu-item index="3" @click="menuBtnClick('/photo')">갤러리</el-menu-item>
       <div class="flex-grow" />
-      <el-menu-item index="3" @click="menuBtnClick('/login')">login </el-menu-item>
+      <el-menu-item index="4" @click="menuBtnClick('/login')">login </el-menu-item>
     </el-menu>
   </el-header>
 </template>
