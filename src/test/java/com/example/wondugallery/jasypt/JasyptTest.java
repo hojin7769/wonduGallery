@@ -6,7 +6,7 @@ public class JasyptTest {
 
     public static void main(String[] args) {
 
-        String password = "jdbc:mysql://141.164.53.210:3306/TEST";
+        String password = "jdbc:mysql://141.164.53.210:3306/test";
 
         StandardPBEStringEncryptor jasypt = new StandardPBEStringEncryptor();
         jasypt.setPassword("MyPrivateKey");
