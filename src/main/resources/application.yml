@@ -6,9 +6,9 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: trace
 spring:
   datasource:
-    url: ENC(XCJ2if4wglTMb8LAHKCIkL8dIjhdCqk6wgE/6DBoC2SDgILsfe/eY16khPB02aRZ)
+    url: ENC(pa4uqnXuFANSC7+aOVWjbMQfYd0pwQKUwQtvVpb/N1XQWZhFlLlRBbY4uPtbwavb)
     username: ENC(RraqcVraoTgYuyfrdxxX8w==)
-    password: ENC(lQy4Qwz/q6+gyOiDYT9KDg==)
+    password: ENC(JcSBW5QGXfEFA77ONB8Fk+0ZuroehWST)
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     defer-datasource-initialization: true
