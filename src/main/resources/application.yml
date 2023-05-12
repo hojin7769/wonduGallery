@@ -6,14 +6,14 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: trace
 spring:
   datasource:
-    url: ENC(pa4uqnXuFANSC7+aOVWjbMQfYd0pwQKUwQtvVpb/N1XQWZhFlLlRBbY4uPtbwavb)
-    username: ENC(RraqcVraoTgYuyfrdxxX8w==)
-    password: ENC(JcSBW5QGXfEFA77ONB8Fk+0ZuroehWST)
+    url: ENC(NYzbxy2qlObzPzG8x7q2b/Q1jFDTWm2kPfQ9LdXXG1+Q6colYViDnJH8OJRduz6n)
+    username: ENC(c2TmUBeNVvJkmV2hplAhgw==)
+    password: ENC(Y4xssGyNP75CKqMK4WUQZjHq91G/5S42)
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     open-in-view: false
     show-sql: true
     properties:
