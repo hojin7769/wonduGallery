@@ -3,7 +3,7 @@
     <LoginView></LoginView>
   </div>
   <div class="common-layout" v-if="true">
-    <el-container class="pageContainer" style="padding: 0px">
+    <el-container class="pageContainer" style="padding: 0">
       <Layout />
     </el-container>
   </div>
