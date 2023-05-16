@@ -1,3 +1,9 @@
+debug: false
+logging:
+  level:
+    com.example.wondugallery: debug
+    org.springframework.web.servlet: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
 spring:
   datasource:
     url: ENC(NYzbxy2qlObzPzG8x7q2b/Q1jFDTWm2kPfQ9LdXXG1+Q6colYViDnJH8OJRduz6n)
@@ -14,11 +20,7 @@ spring:
       hibernate:
         format_sql: true
         default_batch_fetch_size: 100
-  servlet:
-    multipart:
-      max-file-size: 200MB
-      max-request-size: 200MB
-      location: D:/files
+
 
 
 
