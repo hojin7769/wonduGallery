@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -20,7 +21,10 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public List<FileDTO> selectFiles() {
-        return null;
-//        return fileRepository.findAll();
+        return fileRepository.findAll().stream()
+                .map(entity -> FileDTO.builder()
+                        .fileSeq(entity.getFileSeq())
+                        .filePath(entity.getFilePath())
+                        .fileName(entity.getFileName()).build()).toList();
     }
 }
