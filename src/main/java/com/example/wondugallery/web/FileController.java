@@ -15,7 +15,7 @@ public class FileController {
         return new ResponseEntity<>("test", HttpStatus.OK);
     }
 
-    @GetMapping("/file/{fileId}")
+    @GetMapping("/files/{fileId}")
     public ResponseEntity<?> selectFile(@PathVariable(name = "fileId") Integer fileId){
         return new ResponseEntity<>("NASDAQ",HttpStatus.OK);
     }
@@ -23,6 +23,12 @@ public class FileController {
     @GetMapping("/files")
     public ResponseEntity<?> selectFiles(){
         return new ResponseEntity<>("test",HttpStatus.OK);
+    }
+
+    @GetMapping("/error")
+    public ResponseEntity<?> errorTest(){
+        throw new RuntimeException("test");
+//        return new ResponseEntity<>("test",HttpStatus.OK);
     }
 
 }

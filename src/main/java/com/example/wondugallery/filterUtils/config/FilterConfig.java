@@ -1,6 +1,7 @@
 package com.example.wondugallery.filterUtils.config;
 
 import com.example.wondugallery.filterUtils.filter.LogFilter;
+import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 public class FilterConfig {
 
     @Bean
-    public FilterRegistrationBean<LogFilter> logFilter() {
+    public FilterRegistrationBean<Filter> logFilter() {
 
-        FilterRegistrationBean<LogFilter> registrationBean = new FilterRegistrationBean<>();
+        FilterRegistrationBean<Filter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter( new LogFilter() );
         registrationBean.addUrlPatterns( "/*" );
         registrationBean.setOrder( 1 );
