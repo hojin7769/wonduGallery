@@ -1,5 +1,3 @@
-<template>
-  <el-table> </el-table>
-</template>
+<template></template>
 <script lang="ts"></script>
 <style lang="sass" scoped></style>

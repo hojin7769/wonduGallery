@@ -7,7 +7,16 @@
       :ellipsis="false"
       @select="handleSelect"
     >
-      <el-menu-item index="0" @click="menuBtnClick('/')">원두</el-menu-item>
+      <el-menu-item
+        @click="
+          () => {
+            menuBtnClick('/')
+            activeIndex = '0'
+            setIndexInSession('index', 0)
+          }
+        "
+        >원두</el-menu-item
+      >
       <!--      <div class="flex-grow" />-->
       <el-menu-item index="1" @click="menuBtnClick('/about')">Processing Center</el-menu-item>
       <el-sub-menu index="2">
@@ -23,6 +32,7 @@
         </el-sub-menu>
       </el-sub-menu>
       <el-menu-item index="3" @click="menuBtnClick('/photo')">갤러리</el-menu-item>
+      <el-menu-item index="5" @click="menuBtnClick('/board')">게시판 </el-menu-item>
       <div class="flex-grow" />
       <el-menu-item index="4" @click="menuBtnClick('/login')">login </el-menu-item>
     </el-menu>
