@@ -11,13 +11,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class JasyptConfig {
 
+    @Value("${jasypt.encryptor.password}")
+    private String password;
+    @Value("${jasypt.encryptor.algorithm}")
+    private String algorithm;
+
 
     @Bean("jasyptStringEncryptor")
     public StringEncryptor stringEncryptor(){
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
-        config.setPassword("MyPrivateKey");
-        config.setAlgorithm("PBEWithMD5AndDES");
+        config.setPassword(password);
+        config.setAlgorithm(algorithm);
         config.setPoolSize(1);
         encryptor.setConfig(config);
         return encryptor;

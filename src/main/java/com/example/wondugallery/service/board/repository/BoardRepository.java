@@ -1,0 +1,7 @@
+package com.example.wondugallery.service.board.repository;
+
+import com.example.wondugallery.service.board.entity.Board;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BoardRepository extends JpaRepository<Board,Long> {
+}

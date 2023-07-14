@@ -1,8 +1,25 @@
+server:
+  port: 8100
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  error:
+    include-exception: false
+    include-stacktrace: never
+    whitelabel:
+      enabled: false
+  tomcat:
+    uri-encoding: UTF-8
+    max-swallow-size: -1
+    max-http-form-post-size: 20MB
+
 spring:
   datasource:
-    url: ENC(tVuJ4eXj4OTNd7ze0lUVsBu/J9oSnTCG2vIOLTNTSagW3CywgEuNcTm3ji3Xr9/x)
-    username: ENC(6fSDGDDBaScd8kZiLg9Tykt8KGmqp2Su)
-    password: ENC(9kfy/aAIe+bwZPCvRdSJkKY4zSxc2MbR)
+    url: ENC(pjLznbyFCmeA2jvUfx1pD1UGtSVxFi18YaU7hHxfDoyyhjIcwyjZCBiHT30auXDO)
+    username: ENC(uOJ2Dzx1JOlZ22zvIYT22Q==)
+    password: ENC(Vho5daxlktHSKJD/nMzHvw+X3kWNAGRh)
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     defer-datasource-initialization: true
@@ -19,6 +36,24 @@ spring:
       max-file-size: 200MB
       max-request-size: 200MB
       location: D:/files
+cloud:
+  aws:
+    credentials:
+      access-key: AKIAXOEAKU3Q5SXIIIXT
+      secret-key: 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
+    s3:
+      bucket: wondus3
+      storage: STANDARD
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    password: ${jasypt.password}
+    algorithm: ${jasypt.algorithm}
 
 
 

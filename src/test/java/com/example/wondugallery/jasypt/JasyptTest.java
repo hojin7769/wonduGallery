@@ -6,8 +6,8 @@ public class JasyptTest {
 
     public static void main(String[] args) {
 
-        String url = "jdbc:mysql://141.164.53.210:3305/test";
-        String userId = "testUser";
+        String url = "jdbc:mysql://112.169.9.183/WONDU";
+        String userId = "root";
         String password = "goodcen21$";
 
         StandardPBEStringEncryptor jasypt = new StandardPBEStringEncryptor();
@@ -20,8 +20,8 @@ public class JasyptTest {
         String decryptedText = jasypt.decrypt(encryptedText);
 
         System.out.println("encryptedText = " + encryptedText);
-        System.out.println("encryptedText = " + encryptedText1);
-        System.out.println("encryptedText = " + encryptedText2);
+        System.out.println("encryptedText1 = " + encryptedText1);
+        System.out.println("encryptedText2 = " + encryptedText2);
         System.out.println("decryptedText = " + decryptedText);
 
     }
