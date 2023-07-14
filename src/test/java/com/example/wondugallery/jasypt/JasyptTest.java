@@ -7,8 +7,8 @@ public class JasyptTest {
     public static void main(String[] args) {
 
         String url = "jdbc:mysql://112.169.9.183/WONDU";
-        String userId = "root";
-        String password = "goodcen21$";
+        String userId = "123";
+        String password = "123";
 
         StandardPBEStringEncryptor jasypt = new StandardPBEStringEncryptor();
         jasypt.setPassword("MyPrivateKey");
