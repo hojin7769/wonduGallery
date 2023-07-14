@@ -39,8 +39,6 @@ spring:
 cloud:
   aws:
     credentials:
-      access-key: AKIAXOEAKU3Q5SXIIIXT
-      secret-key: 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
     s3:
       bucket: wondus3
       storage: STANDARD
