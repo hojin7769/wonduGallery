@@ -39,8 +39,8 @@ spring:
 cloud:
   aws:
     credentials:
-      access-key: ENC(Suu80nWYxFOn4n2xgiLiCErIOUn/wqy5g9okRVWWXos=)
-      secret-key: ENC(xbN5wL2mLyUv/xZq7ZOcyNyV49wKN+NzfmTUNescCNPI8HY+LrdKn2SHRyN12dAB1jz6Q7vH9rY=)
+      access-key: ENC(A+xe62iDcXcr4ePsBySdY7ep+Poi/xdc43Q+P9WWC8Q=)
+      secret-key: ENC(w4OVdRM/fN1vV5sZDOMWBd4Oxk7ZgsymdzgMgoxTPMgrc39C5rSUj6ub9FtfAw+tlrnGSvjenqU=)
     s3:
       bucket: wondus3
       storage: STANDARD
