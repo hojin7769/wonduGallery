@@ -26,7 +26,7 @@ public class Board extends AuditingFields {
     private String boardContent;
     @ToString.Exclude
     @Column(name="PHOTO_BOARD_FILE_SEQ")
-    @OneToMany( mappedBy = "WONDU_FILE", cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "board", cascade = CascadeType.ALL)
     private final Set<FileEntity> files = new LinkedHashSet<>();
 
 
