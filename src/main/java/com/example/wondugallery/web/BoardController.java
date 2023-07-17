@@ -4,6 +4,7 @@ import com.example.wondugallery.response.BasicResponse;
 import com.example.wondugallery.service.board.BoardService;
 import com.example.wondugallery.service.board.dto.request.BoardRequestRecod;
 import com.example.wondugallery.service.board.dto.response.BoardResponseRecord;
+import com.example.wondugallery.service.file.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/board")
+@RequestMapping("/api/board")
 @Slf4j
 public class BoardController {
 

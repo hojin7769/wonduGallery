@@ -10,12 +10,11 @@ public record BoardResponseRecord(
          Long boardSeq,
          String boardTitle,
          String boardContent,
-         Long fileSeq,
          LocalDateTime createAt
 ) implements Serializable {
 
-    public static BoardResponseRecord of(Long boardSeq, String boardTitle, String boardContent, Long fileSeq, LocalDateTime createAt) {
-      return new BoardResponseRecord(boardSeq, boardTitle, boardContent, fileSeq, createAt);
+    public static BoardResponseRecord of(Long boardSeq, String boardTitle, String boardContent, LocalDateTime createAt) {
+      return new BoardResponseRecord(boardSeq, boardTitle, boardContent, createAt);
     }
 
     public static BoardResponseRecord from(Board board){
@@ -23,7 +22,6 @@ public record BoardResponseRecord(
                board.getBoardSeq(),
                board.getBoardTitle(),
                board.getBoardContent(),
-               board.getFileSeq(),
                board.getCreatedAt()
        );
     }
@@ -31,6 +29,6 @@ public record BoardResponseRecord(
 
 
     public Board toEntity(){
-        return Board.of(boardSeq, boardContent, boardTitle, fileSeq);
+        return Board.of(boardSeq, boardTitle,boardContent);
     }
 }

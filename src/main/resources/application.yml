@@ -17,14 +17,14 @@ server:
 
 spring:
   datasource:
-    url: ENC(pjLznbyFCmeA2jvUfx1pD1UGtSVxFi18YaU7hHxfDoyyhjIcwyjZCBiHT30auXDO)
-    username: ENC(uOJ2Dzx1JOlZ22zvIYT22Q==)
-    password: ENC(Vho5daxlktHSKJD/nMzHvw+X3kWNAGRh)
+    url: ENC(a4Ac9Qgbw359oWNCjiddtEPQ94U6fy8P8NwAJ2WdCsJ0h/gt9U5XbS8fHU3UdXru)
+    username: ENC(7QrHHpROCEp/ZzO++b/v7Q==)
+    password: ENC(vLMcI/79GniFtcAmuUehrbLAPTLApdnU)
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     open-in-view: false
     show-sql: true
     properties:
@@ -42,7 +42,7 @@ cloud:
       access-key: ENC(A+xe62iDcXcr4ePsBySdY7ep+Poi/xdc43Q+P9WWC8Q=)
       secret-key: ENC(w4OVdRM/fN1vV5sZDOMWBd4Oxk7ZgsymdzgMgoxTPMgrc39C5rSUj6ub9FtfAw+tlrnGSvjenqU=)
     s3:
-      bucket: wondus3
+      bucket: my-wondu-buket
       storage: STANDARD
     region:
       static: ap-northeast-2

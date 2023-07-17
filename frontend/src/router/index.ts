@@ -29,7 +29,12 @@ const router = createRouter({
     {
       path: '/board',
       name: 'board',
-      component: () => import('@/views/BoardView.vue')
+      component: () => import('@/views/boarder/BoardView.vue')
+    },
+    {
+      path: '/board/detail',
+      name: 'boardDetail',
+      component: () => import('@/views/boarder/BoardDetail.vue')
     }
   ]
 })

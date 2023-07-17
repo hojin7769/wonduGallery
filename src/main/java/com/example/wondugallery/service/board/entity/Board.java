@@ -1,20 +1,18 @@
 package com.example.wondugallery.service.board.entity;
 
 import com.example.wondugallery.common.auditing.AuditingFields;
+import com.example.wondugallery.service.file.entity.FileEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Stream;
 
 @Entity
 @Getter
-@Builder
-@NoArgsConstructor
 @Table(name = "PHOTO_BOARD")
 public class Board extends AuditingFields {
 
@@ -26,19 +24,22 @@ public class Board extends AuditingFields {
     private String boardTitle;
     @Column(name="PHOTO_BOARD_CONTENT")
     private String boardContent;
+    @ToString.Exclude
     @Column(name="PHOTO_BOARD_FILE_SEQ")
-    private Long fileSeq;
+    @OneToMany( mappedBy = "WONDU_FILE", cascade = CascadeType.ALL)
+    private final Set<FileEntity> files = new LinkedHashSet<>();
 
-    public Board(Long boardSeq, String boardTitle, String boardContent, Long fileSeq) {
-        super();
+
+    protected Board() {}
+
+    private Board(Long boardSeq, String boardTitle, String boardContent) {
         this.boardSeq = boardSeq;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
-        this.fileSeq = fileSeq;
     }
 
-    public static Board of (Long boardSeq, String boardTitle, String boardContent, Long fileSeq) {
-        return new Board(boardSeq,boardTitle,boardContent,fileSeq);
+    public static Board of(Long boardSeq, String boardTitle, String boardContent) {
+        return new Board(boardSeq,boardTitle,boardContent);
     }
 
     @Override
