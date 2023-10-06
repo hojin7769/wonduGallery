@@ -7,21 +7,21 @@ public class JasyptTest {
     public static void main(String[] args) {
 
         String url = "jdbc:mysql://112.169.9.183/WONDU";
-        String userId = "123";
-        String password = "123";
+        String asskey = "root";
+        String secretKey = "goodcen21$";
 
         StandardPBEStringEncryptor jasypt = new StandardPBEStringEncryptor();
-        jasypt.setPassword("MyPrivateKey");
+        jasypt.setPassword("MyprivateKeyIsS3Buket#@HojinUseKeyEncoding");
         jasypt.setAlgorithm("PBEWITHMD5ANDDES");
 
         String encryptedText = jasypt.encrypt(url);
-        String encryptedText1 = jasypt.encrypt(userId);
-        String encryptedText2 = jasypt.encrypt(password);
+        String encryptedText1 = jasypt.encrypt(asskey);
+        String encryptedText2 = jasypt.encrypt(secretKey);
         String decryptedText = jasypt.decrypt(encryptedText);
 
         System.out.println("encryptedText = " + encryptedText);
-        System.out.println("encryptedText1 = " + encryptedText1);
-        System.out.println("encryptedText2 = " + encryptedText2);
+        System.out.println("assKey = " + encryptedText1);
+        System.out.println("secretKey = " + encryptedText2);
         System.out.println("decryptedText = " + decryptedText);
 
     }

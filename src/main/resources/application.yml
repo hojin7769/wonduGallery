@@ -21,6 +21,11 @@ spring:
     username: ENC(7QrHHpROCEp/ZzO++b/v7Q==)
     password: ENC(vLMcI/79GniFtcAmuUehrbLAPTLApdnU)
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      max-lifetime: 60000
   jpa:
     defer-datasource-initialization: true
     hibernate:

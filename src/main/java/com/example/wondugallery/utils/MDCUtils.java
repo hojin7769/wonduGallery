@@ -6,9 +6,9 @@ import org.springframework.util.StringUtils;
 public class MDCUtils {
     public static enum LOG_COMMON_INFO {
 
-        METHOD_NAME ( "methodName" ),
-        METHOD_ARGS ( "methodArgs" ),
-        METHOD_RETURN ( "methodReturn" ),
+        METHOD_NAME ("methodName"),
+        METHOD_ARGS ( "methodArgs"),
+        METHOD_RETURN ( "methodReturn"),
 
         ;
 
@@ -19,7 +19,7 @@ public class MDCUtils {
         }
 
         public String getValue () {
-            return get( key );
+            return get(key);
         }
 
         public void putValue ( String value ) {
@@ -29,23 +29,23 @@ public class MDCUtils {
 
     public static enum WEB_LOG_INFO {
 
-        REQUEST_UID ( "requestUID" ),
-        REQUEST_USERAGENT ( "requestUserAgent" ),
-        REQUEST_START_TIME ( "requestStartTime" ),
+        REQUEST_UID ("requestUID"),
+        REQUEST_USERAGENT ("requestUserAgent"),
+        REQUEST_START_TIME ( "requestStartTime")
         ;
 
-        String key;
+        final String key;
 
         WEB_LOG_INFO ( String key ) {
             this.key = key;
         }
 
-        public String getValue () {
-            return get( key );
+        public String getKey () {
+            return get(key);
         }
 
-        public void putValue ( String value ) {
-            put( key, value );
+        public void putValue (String value) {
+            put(key, value);
         }
     }
 
@@ -56,9 +56,9 @@ public class MDCUtils {
      * @param key - Log에서 받을 Key, Logger에서 %X로 접근 가능
      * @param value - Log로 남길 Value
      * */
-    public static void put ( String key , String value ) {
+    public static void put (String key , String value) {
 
-        MDC.put( key , value );
+        MDC.put(key , value);
     }
 
     /**
@@ -68,8 +68,8 @@ public class MDCUtils {
      * @param key - 조회 KEY
      * @return {string|""} - 값이 없으면 ""를 반환
      * */
-    public static String  get( String key ) {
-        return MDCUtils.get( key , "" );
+    public static String get(String key) {
+        return MDCUtils.get(key , "");
     }
 
     /**
@@ -79,11 +79,11 @@ public class MDCUtils {
      * @param key -  조회 KEY
      * @param defaultVal - Key로 조회한 값이 null이면 받을 값
      * */
-    public static String get( String key , String defaultVal ) {
+    public static String get(String key , String defaultVal) {
 
-        String value = MDC.get( key );
+        String value = MDC.get(key);
 
-        if ( !StringUtils.hasText( value ) ) {
+        if (!StringUtils.hasText(value)) {
 
             return defaultVal;
         }
@@ -97,13 +97,13 @@ public class MDCUtils {
      * @author ted
      * @param key - 식제할 KEY
      * */
-    public static void remove ( String key ) {
+    public static void remove (String key) {
 
-        if ( !StringUtils.hasText( key ) ) {
+        if (!StringUtils.hasText(key) ) {
             return;
         }
 
-        MDC.remove( key );
+        MDC.remove(key);
     }
 
     /**

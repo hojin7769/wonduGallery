@@ -1,18 +1,22 @@
-package com.example.wondugallery.filterUtils.filter;
+package com.example.wondugallery.config.filter.log;
 
 import com.example.wondugallery.utils.MDCUtils;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.extern.slf4j.Slf4j;
-import org.slf4j.MDC;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.UUID;
 
-@Slf4j
+/**
+ * @author admin
+ * @version 1.0
+ * @project wondu-gallery
+ * @package com.example.wondugallery.config.filter.log
+ * @date 2023-10-06
+ * @explanation
+ */
 public class LogFilter implements Filter {
-
     /**
      * 필터가 생성될 때 수행되는 메소드
      *
@@ -40,8 +44,8 @@ public class LogFilter implements Filter {
         Enumeration<String> str = req.getHeaderNames();
 
         try {
-            MDCUtils.put( "requestUID" , UUID.randomUUID().toString().substring(0,8));
-//            MDCUtils.put( "requestUserAgent" , req.getHeaderNames().toString() );
+            MDCUtils.put( "requestUID" , RandomStringUtils.randomAlphanumeric( 8 ) );
+            MDCUtils.put("requestUserAgent" , req.getHeaderNames().toString());
 
             chain.doFilter( request, response );
         }
@@ -58,4 +62,8 @@ public class LogFilter implements Filter {
 
     }
 
+    private String getHeader( HttpServletRequest req ) {
+
+        return req.getHeader( "X-Forwarded-For" );
+    }
 }

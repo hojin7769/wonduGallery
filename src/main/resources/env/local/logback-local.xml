@@ -1,6 +1,6 @@
-<configuration scan="true" scanPeriod="60 seconds">
+<included>
 
-<!-- LOG 홈 설정 -->
+    <!-- LOG 홈 설정 -->
     <property name="LOG_DIR" value="./log"/>
 
     <property name="CHARSET" value="UTF-8" />
@@ -12,7 +12,9 @@
     <property name="API_LOG_PATTERN" value="[%-5level] : #%X{requestUID} #%X{requestUserAgent} #START:%X{requestStartTime} #%X{methodName} #%X{methodArgs} #%X{methodReturn}%n"/>
     <!-- 표준 SQL 로그 패턴 -->
     <property name="SQL_LOG_PATTERN" value="[%-5level] : #%X{requestUID} #%X{requestUserAgent} %msg%n"/>
+    <property name="SERVICE_LOG_PATTERN" value="[%-5level] [%d{HH:mm:ss.SSS}] [%thread]  #%X{requestUID} [%X{className}] #%X{methodName} : param[%X{parameter}] %n return[#%X{return}]%n"/>
 
+    <!--    <property name="SEND_LOG_PATTERN" value="" />-->
     <timestamp key="FILE_NAME_BY_SECOND" datePattern="yyyyMMdd 'T' HHmmss " />
 
     <!-- 로그 꾸미는 용도 -->
@@ -53,6 +55,16 @@
             <pattern>${SQL_LOG_PATTERN}</pattern>
         </encoder>
     </appender>
+    <!-- APPENDER : 로그를 출력 할 위치, 출력 형식 등을 설정 -->
+    <appender name="SERVICE_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <withJansi>true</withJansi>
+        <encoder>
+            <charset>${CHARSET}</charset>
+            <pattern>${SERVICE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
 
     <!-- Request Log -->
     <appender name="REQUEST_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -60,10 +72,8 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
             <fileNamePattern>api.%d{yyyy-MM-dd}.log</fileNamePattern>
-
             <maxHistory>3</maxHistory>
             <totalSizeCap>100MB</totalSizeCap>
-
         </rollingPolicy>
         <encoder>
             <charset>${CHARSET}</charset>
@@ -104,6 +114,23 @@
             <pattern>${SQL_LOG_PATTERN}</pattern>
         </encoder>
     </appender>
+
+
+    <appender name="SERVICE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/service/service.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${LOG_DIR}/service/service.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+            <totalSizeCap>100MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <charset>${CHARSET}</charset>
+            <pattern>${SERVICE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+
 
     <!-- ERROR LOG -->
     <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -152,9 +179,17 @@
     </logger>
 
     <!-- SQL LOG : hibernate -->
-    <logger name="org.hibernate.SQL" level="TRACE">
+    <logger name="org.hibernate.SQL" level="info">
         <appender-ref ref="SQL_STDOUT"/>
         <appender-ref ref="SQL_LOG"/>
     </logger>
 
-</configuration>
+
+    <logger name="SERVICE_LOG" level="INFO" additivity="false">
+        <appender-ref ref="SERVICE_STDOUT"/>
+        <appender-ref ref="SERVICE_LOG"/>
+    </logger>
+
+
+
+</included>
