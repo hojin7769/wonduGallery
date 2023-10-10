@@ -51,6 +51,23 @@ class BoardRepositoryTest {
         assertThat(boards)
                 .isNotNull();
     }
+    @DisplayName("insert 테스트")
+    @Test
+    void givenTestData_whenInserting_thenWorksFine() {
+        // Given
+        Board board = Board.of(null,"제목","내용");
+
+        // When
+        Board save = boardRepository.save(board);
+
+        // Then
+        assertThat(save)
+                .isNotNull();
+        assertThat(boardRepository.findAll())
+                .isNotNull()
+                .hasSize(1);
+    }
+
 
     @EnableJpaAuditing
     @TestConfiguration
