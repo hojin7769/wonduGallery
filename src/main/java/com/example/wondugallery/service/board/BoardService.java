@@ -30,6 +30,7 @@ public class BoardService {
 
     }
 
+    @Transactional
     public BoardResponseRecord save(BoardRequestRecod boardRequest){
         Board save = boardRepository.save(boardRequest.toEntity());
         return BoardResponseRecord.from(save);
