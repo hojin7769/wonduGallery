@@ -10,8 +10,11 @@ public interface CrudService<RESPONSE,REQUEST> {
     List<RESPONSE> findAll(REQUEST request, Pageable pageable);
     @Transactional(readOnly = true)
     RESPONSE findById (Long id);
+    @Transactional
     RESPONSE insert(REQUEST request);
+    @Transactional
     RESPONSE update(REQUEST request);
+    @Transactional
     void delete(REQUEST request);
 
 

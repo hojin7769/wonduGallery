@@ -71,7 +71,7 @@
         <file>${LOG_DIR}/api/api.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>api.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${LOG_DIR}/api/api.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>3</maxHistory>
             <totalSizeCap>100MB</totalSizeCap>
         </rollingPolicy>
@@ -86,7 +86,7 @@
         <file>${LOG_DIR}/domain/domain.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>domain.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${LOG_DIR}/domain/domain.%d{yyyy-MM-dd}.log</fileNamePattern>
 
             <maxHistory>3</maxHistory>
             <totalSizeCap>100MB</totalSizeCap>
@@ -103,7 +103,7 @@
         <file>${LOG_DIR}/sql/sql.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>sql.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${LOG_DIR}/sql/sql.%d{yyyy-MM-dd}.log</fileNamePattern>
 
             <maxHistory>3</maxHistory>
             <totalSizeCap>100MB</totalSizeCap>
@@ -144,7 +144,7 @@
 
         <file>${LOG_DIR}/error/error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${LOG_DIR}/error/error.%d{yyyy-MM-dd}.log</fileNamePattern>
 
             <maxHistory>3</maxHistory>
             <totalSizeCap>100MB</totalSizeCap>
