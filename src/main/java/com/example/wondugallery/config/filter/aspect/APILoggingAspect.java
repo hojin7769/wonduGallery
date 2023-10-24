@@ -13,6 +13,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,25 +50,13 @@ public class APILoggingAspect {
             MDCUtils.WEB_LOG_INFO.REQUEST_UID.putValue( reqId );
             MDCUtils.WEB_LOG_INFO.REQUEST_START_TIME.putValue( startTime );
             MDCUtils.LOG_COMMON_INFO.METHOD_NAME.putValue( apiName );
-            MDCUtils.LOG_COMMON_INFO.METHOD_ARGS.putValue( gson.toJson(params(proceedingJoinPoint)) );
+            MDCUtils.LOG_COMMON_INFO.METHOD_ARGS.putValue( Arrays.toString( proceedingJoinPoint.getArgs() ) );
             MDCUtils.LOG_COMMON_INFO.METHOD_RETURN.putValue( result != null ? result.toString() : "{}" );
 
             apiLog.info("");
         }
 
         return result;
-    }
-
-
-    private Map params(ProceedingJoinPoint joinPoint) {
-        CodeSignature codeSignature = (CodeSignature) joinPoint.getSignature();
-        String[] parameterNames = codeSignature.getParameterNames();
-        Object[] args = joinPoint.getArgs();
-        Map<String, Object> params = new HashMap<>();
-        for (int i = 0; i < parameterNames.length; i++) {
-            params.put(parameterNames[i], args[i]);
-        }
-        return params;
     }
 
 }

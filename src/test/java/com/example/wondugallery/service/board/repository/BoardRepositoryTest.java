@@ -1,6 +1,7 @@
 package com.example.wondugallery.service.board.repository;
 
 import com.example.wondugallery.config.DBConfig;
+import com.example.wondugallery.config.JasyptConfig;
 import com.example.wondugallery.config.datasource.DataSourceConfig;
 import com.example.wondugallery.service.board.entity.Board;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @explanation
  */
 @DisplayName("JPA 연결 테스트")
-@Import({BoardRepositoryTest.TestJpaConfig.class})
+@Import({BoardRepositoryTest.TestJpaConfig.class, JasyptConfig.class})
 @DataJpaTest
 class BoardRepositoryTest {
 

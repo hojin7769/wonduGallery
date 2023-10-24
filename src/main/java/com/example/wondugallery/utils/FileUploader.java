@@ -26,11 +26,11 @@ public class FileUploader {
     private final AmazonS3Client amazonS3Client;
 
 
-    public List<S3FileDto> uploadFiles(String fileType, List<MultipartFile> multipartFiles){
+    public List<S3FileDto> uploadFiles(Long boardSeq, List<MultipartFile> multipartFiles){
 
         List<S3FileDto> s3files = new ArrayList<>();
 
-        String uploadFilePath = fileType + "/" + getFolderName();
+        String uploadFilePath = boardSeq + "/" + getFolderName();
 
         for (MultipartFile multipartFile : multipartFiles){
             String originalFileName = multipartFile.getOriginalFilename();

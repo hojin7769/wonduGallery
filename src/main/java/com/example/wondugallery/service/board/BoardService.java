@@ -16,12 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class BoardService {
 
     private final BoardRepository boardRepository;
-    private final ModelMapper modelMapper;
 
     @Autowired
-    public BoardService(BoardRepository boardRepository, ModelMapper modelMapper) {
+    public BoardService(BoardRepository boardRepository) {
         this.boardRepository = boardRepository;
-        this.modelMapper = modelMapper;
     }
 
     @Transactional(readOnly = true)

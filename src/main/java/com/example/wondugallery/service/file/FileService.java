@@ -69,9 +69,9 @@ public class FileService implements CrudService<FileResponse, FileRequest> {
         fileRepositotry.delete(fileRequest.toEntitiy(null));
     }
 
-    public List<FileResponse> uploadListFile(String fileType,List<MultipartFile> multipartFileList){
+    public List<FileResponse> uploadListFile(Long boardSeq,List<MultipartFile> multipartFileList){
 
-        List<S3FileDto> jpg = fileUploader.uploadFiles(fileType, multipartFileList);
+        List<S3FileDto> jpg = fileUploader.uploadFiles(boardSeq, multipartFileList);
         return null;
     }
 }

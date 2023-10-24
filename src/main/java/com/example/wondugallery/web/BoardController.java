@@ -4,7 +4,9 @@ import com.example.wondugallery.response.BasicResponse;
 import com.example.wondugallery.service.board.BoardService;
 import com.example.wondugallery.service.board.dto.request.BoardRequestRecod;
 import com.example.wondugallery.service.board.dto.response.BoardResponseRecord;
+import com.example.wondugallery.service.board.entity.Board;
 import com.example.wondugallery.service.file.FileService;
+import com.example.wondugallery.service.file.entity.FileEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +16,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -47,11 +50,15 @@ public class BoardController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<BasicResponse> save(@RequestBody(required = false) BoardRequestRecod boardRequest){
+    public ResponseEntity<BasicResponse> save(@RequestBody(required = false) BoardRequestRecod boardRequest,
+                                              @RequestPart(required = false)List<MultipartFile> multipartFiles){
+        BoardResponseRecord save = boardService.save(boardRequest);
+        Board entity = save.toEntity();
+
         BasicResponse basicResponse = BasicResponse.builder()
                 .code(HttpStatus.OK.value())
                 .message("저장성공")
-                .result(List.of(boardService.save(boardRequest)))
+                .result(List.of())
                 .build();
         return new ResponseEntity<>(basicResponse,HttpStatus.OK);
     }

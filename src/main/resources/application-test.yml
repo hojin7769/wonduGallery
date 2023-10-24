@@ -54,7 +54,7 @@ cloud:
       access-key: ENC(A+xe62iDcXcr4ePsBySdY7ep+Poi/xdc43Q+P9WWC8Q=)
       secret-key: ENC(w4OVdRM/fN1vV5sZDOMWBd4Oxk7ZgsymdzgMgoxTPMgrc39C5rSUj6ub9FtfAw+tlrnGSvjenqU=)
     s3:
-      bucket: wondu-file-storge
+      bucket: my-wondu-buket
       storage: STANDARD
     region:
       static: ap-northeast-2

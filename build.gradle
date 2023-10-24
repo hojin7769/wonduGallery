@@ -1,3 +1,9 @@
+//추가
+buildscript {
+    ext {
+        querydslVersion = '5.0.0'
+    }
+}
 plugins {
     id 'java'
     id 'war'
@@ -8,6 +14,7 @@ plugins {
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
+
 
 configurations {
     compileOnly {
@@ -53,38 +60,94 @@ dependencies {
     runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     // queryDSL 설정
+    //querydsl 설정 추가
     implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
-    implementation "com.querydsl:querydsl-core"
-    implementation "com.querydsl:querydsl-collections"
     annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
-    annotationProcessor "jakarta.annotation:jakarta.annotation-api" // java.lang.NoClassDefFoundError (javax.annotation.Generated) 대응 코드
-    annotationProcessor "jakarta.persistence:jakarta.persistence-api" // java.lang.NoClassDefFoundError (javax.annotation.Entity) 대응 코드
+    annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+    annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+
+    /** TEST */
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+//    testImplementation 'org.testcontainers:mysql'
 }
 
-// === ⭐ QueryDsl 빌드 옵션 (선택) ===
-def querydslDir = 'src/main/generated'
+// Querydsl 설정부
+def generated = 'src/main/generated'
 
-sourceSets {
-    main.java.srcDirs += [ querydslDir ]
-}
-
+// querydsl QClass 파일 생성 위치를 지정
 tasks.withType(JavaCompile) {
-    options.annotationProcessorGeneratedSourcesDirectory = file(querydslDir)
+    options.getGeneratedSourceOutputDirectory().set(file(generated))
 }
 
-clean.doLast {
-    file(querydslDir).deleteDir()
+// java source set 에 querydsl QClass 위치 추가
+sourceSets {
+    main.java.srcDirs += [generated]
 }
 
-bootWar{
+// gradle clean 시에 QClass 디렉토리 삭제
+clean {
+    delete file(generated)
+}
+
+bootWar {
     archivesBaseName = "ROOT"
-    archiveFileName="ROOT.war"
-    archiveVersion="0.0.0"
+    archiveFileName = "ROOT.war"
+    archiveVersion = "0.0.0"
 }
+
+
+//tasks.withType(Test).configureEach  {
+//
+//    jvmArgs += ["-Djasypt.encryptor.password=${providers.gradleProperty("jasypt.encryptor.password").get()}"
+//            , "-Djasypt.encryptor.algorithm=${providers.gradleProperty("jasypt.encryptor.algorithm").get()}"
+//    ]
+//    useJUnitPlatform()
+//    systemProperty 'jasypt.encryptor.password', findProperty("jasypt.password")
+//    systemProperty 'jasypt.encryptor.algorithm', findProperty("jasypt.algorithm")
+//    testLogging {
+//        exceptionFormat "full"
+//        events "started", "skipped", "passed", "failed"
+//        showStandardStreams true
+//    }
+//}
+
+//tasks.withType(Test) {
+//    useJUnitPlatform()
+//    testLogging {
+//        exceptionFormat "full"
+//        events "started", "skipped", "passed", "failed"
+//        showStandardStreams true
+//    }
+//}
 
 tasks.named('test') {
+    jvmArgs += ["-Djasypt.encryptor.password=${providers.gradleProperty("jasypt.encryptor.password").get()}"
+                , "-Djasypt.encryptor.algorithm=${providers.gradleProperty("jasypt.encryptor.algorithm").get()}"
+    ]
+    systemProperty 'jasypt.encryptor.password', findProperty("jasypt.password")
+    systemProperty 'jasypt.encryptor.algorithm', findProperty("jasypt.algorithm")
     useJUnitPlatform()
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
+    }
 }
+
+//test {
+//    jvmArgs += ["-Djasypt.encryptor.password=${providers.gradleProperty("jasypt.encryptor.password").get()}"
+//                , "-Djasypt.encryptor.algorithm=${providers.gradleProperty("jasypt.encryptor.algorithm").get()}"
+//    ]
+//
+//    useJUnitPlatform()
+//    systemProperty 'jasypt.encryptor.password', findProperty("jasypt.password")
+//    systemProperty 'jasypt.encryptor.algorithm', findProperty("jasypt.algorithm")
+//    testLogging {
+//        exceptionFormat "full"
+//        events "started", "skipped", "passed", "failed"
+//        showStandardStreams true
+//    }
+//}
