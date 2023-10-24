@@ -27,11 +27,11 @@ class WonduGalleryApplicationTests {
         System.out.println("key = ENC(" + key_enc + ")");
 
         // id
-        String id_enc = stringEncryptor.encrypt("Cy8Y9gVzqaC9HGiP/JS9C7eeEmU4RCriNpeXcosD");
+        String id_enc = stringEncryptor.encrypt("");
         System.out.println("id = ENC(" + id_enc + ")");
 
         // pw
-        String pw_enc = stringEncryptor.encrypt("AKIAYMAQSUGC7G6LTY4U");
+        String pw_enc ");
         System.out.println("pw = ENC(" + pw_enc + ")");
 
         // 테스트용 복호화
