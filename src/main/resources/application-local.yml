@@ -38,9 +38,10 @@ spring:
         default_batch_fetch_size: 100
   servlet:
     multipart:
+      file-size-threshold: 1MB
+      location: D:/Temp
       max-file-size: 200MB
       max-request-size: 200MB
-      location: D:/files
   sql:
     init:
       mode: always
@@ -51,8 +52,8 @@ spring:
 cloud:
   aws:
     credentials:
-      access-key: ENC(A+xe62iDcXcr4ePsBySdY7ep+Poi/xdc43Q+P9WWC8Q=)
-      secret-key: ENC(w4OVdRM/fN1vV5sZDOMWBd4Oxk7ZgsymdzgMgoxTPMgrc39C5rSUj6ub9FtfAw+tlrnGSvjenqU=)
+      access-key: ENC(TNEz6+LpttbYPW4Rg97lhGhkGascAWR84XxSaAD4XgM=)
+      secret-key: ENC(olC60+Z+I+osV+B8K7oF1VJnj5mb6S91g4vLWFcyCOWfWufMoQ7cybpI9m1u42gXip1gcEWZi44=)
     s3:
       bucket: wondu-file-storge
       storage: STANDARD

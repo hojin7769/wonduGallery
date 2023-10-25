@@ -31,7 +31,7 @@ class WonduGalleryApplicationTests {
         System.out.println("id = ENC(" + id_enc + ")");
 
         // pw
-        String pw_enc ");
+        String pw_enc = stringEncryptor.encrypt("");
         System.out.println("pw = ENC(" + pw_enc + ")");
 
         // 테스트용 복호화

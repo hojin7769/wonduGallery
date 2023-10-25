@@ -47,10 +47,11 @@ public class FileController {
     @PostMapping("/uploadFile")
     public ResponseEntity<BasicResponse> uploadFile(
             @RequestPart(required = false,name = "file")List<MultipartFile> multipartFileList,
-            @RequestParam("/boardSeq") Long boardSeq
+            @RequestPart(value = "boardSeq") String boardSeq
     ){
 
-        List<FileResponse> fileResponses = fileService.uploadListFile(boardSeq, multipartFileList);
+
+        List<FileResponse> fileResponses = fileService.uploadListFile(Long.parseLong(boardSeq), multipartFileList);
 
         BasicResponse basicResponse = BasicResponse.builder()
                 .code(HttpStatus.OK.value())

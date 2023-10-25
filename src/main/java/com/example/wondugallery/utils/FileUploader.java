@@ -51,6 +51,7 @@ public class FileUploader {
             }
             s3files.add(
                     S3FileDto.builder()
+
                             .originalFileName(originalFileName)
                             .uploadFileName(uploadFileName)
                             .uploadFilePath(uploadFilePath)
@@ -65,7 +66,8 @@ public class FileUploader {
      * UUID 파일명 반환
      */
     public String getUuidFileName(String fileName) {
-        String ext = fileName.substring(fileName.indexOf(".") + 1);
+        int i = fileName.lastIndexOf(".");
+        String ext = fileName.substring(i + 1);
         return UUID.randomUUID().toString() + "." + ext;
     }
 
